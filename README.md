@@ -1,9 +1,6 @@
 # Cassandra distributed database cinema application
 ## Instructions
 Setup:
-1. Create a `Python 3.11` virtual environment.
-2. Activate it.
-3. Install the dependencies.
 ```shell
 python3.11 -m venv venv
 source venv/bin/activate
