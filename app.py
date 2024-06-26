@@ -22,7 +22,7 @@ class CinemaDatabaseApp:
         self.login_to_database()
 
     def create_widgets(self):
-        self.title_label = tk.Label(self.master, text="***  Cinema Database  ***", font=("Helvetica", 16))
+        self.title_label = tk.Label(self.master, text="Cinema Database", font=("Helvetica", 16))
         self.title_label.pack(pady=10)
 
         self.options_frame = tk.Frame(self.master)

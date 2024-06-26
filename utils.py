@@ -13,8 +13,6 @@ def avaiable_seats(session, movie_name):
     return all_seats.difference(taken_seats)
 
 def add_reservation(username, session, movie_name, seat):
-    # if seat not in avaiable_seats(session, movie_name):
-        # raise Exception("The seat is not available.")   
     # Remove the seat from available
     query = f"UPDATE cinema.movies SET taken_seats = taken_seats + {{{seat}}} WHERE movie_name = '{movie_name}';"
     session.execute(query)
