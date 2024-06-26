@@ -1,4 +1,4 @@
- Cassandra distributed database cinema application
+# Cassandra distributed database cinema application
 ## Instructions
 Setup:
 ```shell
