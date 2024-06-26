@@ -13,7 +13,7 @@ class CassandraStressTests(unittest.IsolatedAsyncioTestCase):
         cls.user1 = 'user1'
         cls.user2 = 'user2'
         cls.movie_name = 'Test Movie'
-        cls.seat = 1  
+        cls.seat = 1  # Define seat here
         cls.setup_test_movie()
 
     @classmethod
@@ -55,7 +55,7 @@ class CassandraStressTests(unittest.IsolatedAsyncioTestCase):
         await asyncio.gather(*tasks)
 
     async def test_stress_4(self):
-        """ Stress Test 4: constant cancellations and seat occupancy (for the same seat 10,000 times). """
+        """ Stress Test 4: (only for pairs) constant cancellations and seat occupancy (for the same seat 10,000 times). """
         tasks = []
         for _ in range(10000):
             reservation_id = uuid.uuid4()
@@ -66,7 +66,7 @@ class CassandraStressTests(unittest.IsolatedAsyncioTestCase):
         await asyncio.gather(*tasks)
 
     async def test_stress_5(self):
-        """ Stress Test 5: Update of 1,000 reservations (e.g., change date for all reservations). """
+        """ Stress Test 5: (only for pairs) Update of 1,000 reservations (e.g., change date for all reservations). """
         tasks = []
         for _ in range(1000):
             reservation_id = uuid.uuid4()
@@ -74,6 +74,7 @@ class CassandraStressTests(unittest.IsolatedAsyncioTestCase):
             tasks.append(asyncio.create_task(self.async_update_reservation(self.user1, self.session, reservation_id, self.movie_name, self.seat, self.seat + 1)))
             tasks.append(asyncio.create_task(self.async_delete_reservation(self.user1, self.session, reservation_id, self.movie_name, self.seat + 1)))
         await asyncio.gather(*tasks)
+
 
     @classmethod
     def tearDownClass(cls):
